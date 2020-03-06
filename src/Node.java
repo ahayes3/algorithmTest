@@ -146,11 +146,7 @@ public class Node
 	}
 	public void connectTeleporters()
 	{
-		ArrayList<Node> found = new ArrayList<>();
-		for(int i=0;i<getWidth();i++)
-		{
-			//for(int j=0;j<)
-		}
+		connectTeleporters(new ArrayList<Node>());
 	}
 	public void connectTeleporters(ArrayList<Node> found)
 	{
