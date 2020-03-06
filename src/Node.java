@@ -69,6 +69,16 @@ public class Node
 	{
 		return tele;
 	}
+	public ArrayList<Node> getNeighbors()
+	{
+		ArrayList<Node> out = new ArrayList<>();
+		out.add(up);
+		out.add(right);
+		out.add(down);
+		out.add(left);
+		out.add(tele);
+		return out;
+	}
 	public Node add(Node n)
 	{
 		if(n.coord.x == 0 && this.coord.x > 0)
@@ -137,11 +147,60 @@ public class Node
 	public void connectTeleporters()
 	{
 		ArrayList<Node> found = new ArrayList<>();
-		//for(int i=0;)
+		for(int i=0;i<getWidth();i++)
+		{
+			//for(int j=0;j<)
+		}
+	}
+	public void connectTeleporters(ArrayList<Node> found)
+	{
+		if(teleNum >0)
+		{
+			Node a=null;
+			for(Node n:found)
+			{
+				if(n.teleNum == teleNum)
+					a = n;
+			}
+			if(a!=null)
+				connect(a,this);
+			else
+				found.add(this);
+			//Optional<Node> a = found.stream().filter(p->p.teleNum == teleNum).findFirst();
+			//a.ifPresent(node -> connect(this, node));
+		}
+		
+		if(right == null && down ==null)
+			return;
+		else if(right == null)
+			getNode(0,this.getCoord().y+1).connectTeleporters(found);
+		else
+			right.connectTeleporters(found);
+	}
+	public static void connect(Node a,Node b)
+	{
+		a.tele = b;
+		b.tele = a;
 	}
 	@Override
 	public String toString()
 	{
 		return "Weight: "+weight+" "+coord.toString();
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		try
+		{
+			Node n = (Node) obj;
+			if(n.coord.equals(coord))
+				return true;
+		}
+		catch(ClassCastException e)
+		{
+			return false;
+		}
+		return false;
 	}
 }

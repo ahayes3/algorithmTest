@@ -37,4 +37,8 @@ public class Grid
 	{
 		return head.getDepth();
 	}
+	public void connectTeleporters()
+	{
+		head.connectTeleporters();
+	}
 }
