@@ -29,4 +29,12 @@ public class Grid
 	{
 		return head.bottomLeft();
 	}
+	public int getWidth()
+	{
+		return head.getWidth();
+	}
+	public int getDepth()
+	{
+		return head.getDepth();
+	}
 }

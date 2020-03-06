@@ -13,7 +13,7 @@ public class Main
 		Scanner scanner = null;
 		try
 		{
-			scanner = new Scanner(new File("input.txt"));
+			scanner = new Scanner(new File("src/input2.txt"));
 		}
 		catch(IOException e)
 		{
@@ -37,8 +37,18 @@ public class Main
 				else
 					next = grid.add(new Node(strs[j],new Coord(i,j)));
 			}
-			//next = grid.bottomLeft(); //Skips going down the whole column each time
 		}
+		
+		Coord s = new Coord(0,0);
+		Coord e = new Coord(3,2);
+		Node start = grid.getNode(s);
+		Node end = grid.getNode(e);
+		
+		
 		System.out.println("HERE");
+	}
+	public static void plus(Integer a)
+	{
+		a++;
 	}
 }

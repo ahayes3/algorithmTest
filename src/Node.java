@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class Node
@@ -36,6 +38,20 @@ public class Node
 		up=left=right=down=null;
 		tele = null;
 		teleNum = -1;
+	}
+	public int getWidth()
+	{
+		if(right == null)
+			return 1;
+		else
+			return 1+right.getWidth();
+	}
+	public int getDepth()
+	{
+		if(down == null)
+			return 1;
+		else
+			return 1+down.getDepth();
 	}
 	public int getWeight()
 	{
@@ -117,6 +133,11 @@ public class Node
 			return down.bottomLeft();
 		else
 			return this;
+	}
+	public void connectTeleporters()
+	{
+		ArrayList<Node> found = new ArrayList<>();
+		//for(int i=0;)
 	}
 	@Override
 	public String toString()
