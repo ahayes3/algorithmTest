@@ -38,6 +38,7 @@ public class Main
 					next = grid.add(new Node(strs[j],new Coord(i,j)));
 			}
 		}
+		grid.connectTeleporters();
 		
 		Coord s = new Coord(0,0);
 		Coord e = new Coord(3,2);

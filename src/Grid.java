@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+
 public class Grid
 {
 	private Node head;
+	private ArrayList<Node> teles;
 	public Grid()
 	{
 		head = null;
+		teles = null;
 	}
 	public Node add(Node n)
 	{
@@ -39,6 +43,10 @@ public class Grid
 	}
 	public void connectTeleporters()
 	{
-		head.connectTeleporters();
+		head.connectTeleporters(teles);
+	}
+	public ArrayList<Node> getTeleporters()
+	{
+		return teles;
 	}
 }

@@ -144,11 +144,12 @@ public class Node
 		else
 			return this;
 	}
-	public void connectTeleporters()
+	public void connectTeleporters(ArrayList<Node> teles)
 	{
-		connectTeleporters(new ArrayList<Node>());
+		teles = new ArrayList<>();
+		connectTeleporters(new ArrayList<>(),teles);
 	}
-	public void connectTeleporters(ArrayList<Node> found)
+	public void connectTeleporters(ArrayList<Node> found,ArrayList<Node> teles)
 	{
 		if(teleNum >0)
 		{
@@ -167,11 +168,21 @@ public class Node
 		}
 		
 		if(right == null && down ==null)
+		{
+			teles.add(this);
 			return;
+		}
 		else if(right == null)
-			getNode(0,this.getCoord().y+1).connectTeleporters(found);
+		{
+			Node n = getNode(0,this.getCoord().y+1);
+			teles.add(n);
+			n.connectTeleporters(found,teles);
+		}
 		else
+		{
+			teles.add(right);
 			right.connectTeleporters(found);
+		}
 	}
 	public static void connect(Node a,Node b)
 	{
